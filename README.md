@@ -1,32 +1,46 @@
-# dis
+## Setup
 
-[![Build Status](https://secure.travis-ci.org/pivotal/dis.png?branch=master)](http://travis-ci.org/pivotal/dis)
+*Note: These instructions assume you have a Java 1.8 [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.*
 
-## Description
+To start a new Android project:
 
-[Pivotal Labs](http://pivotallabs.com) engineers and data scientists will collaborate on building an Android
-app named "dis" that makes predictions of about incidents occurring on the London Underground.
+1. Install [Android Studio 1.1.0](http://developer.android.com/sdk/index.html).
 
-## Backlog
+2. Run the [Android SDK Manager](http://developer.android.com/tools/help/sdk-manager.html) and install
+`API 19` and `Build-tools 21.1.2`.
 
-The backlog for the project can be found [here](https://www.pivotaltracker.com/n/projects/1278296).
+3. Create a `local.properties` [file](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Simple-build-files) in the root of the project that points to
+your SDK installation location. Importing the project into Android Studio (detailed below) will do this for you.
 
-## Releases
+4. In the project directory you should be able to run the Robolectric tests:
 
-You can download releases of the Dis Android app on our Github releases page [here](https://github.com/pivotal/dis/releases).
+    ```bash
+    ./gradlew clean test
+    ```
 
-## Configuring S3
+5. You should also be able to run the Espresso tests:
 
-Dis stores its data in S3. The file containing the digested disruptions file must be public. An easy way to manage S3 resources is using [s3cmd](http://s3tools.org/s3cmd). You should be able to install this using any decent package manager, or Homebrew. Once installed, configure it:
+    ```bash
+    ./gradlew clean connectedAndroidTest
+    ```
 
-```
-s3cmd --configure
-```
+    Note: Make sure to start an Emulator or connect a device first so the test has something to connect to.
 
-You will be prompted for all sorts of highly personal details, of which only the access key and secret key are essential. You can then make any file public:
+## Android Studio Support
 
-```
-s3cmd setacl --acl-public s3://pivotal-london-dis-digest/disruptions.json
-```
+### Compatibility
+Deckard gradle is designed to run against Android Studio 1.1.0 with
+"Unit Testing support" enabled in Studio's Gradle settings.
 
-Alternatively, use the ``--recursive`` flag to make a directory, or an entire bucket, public.
+### Importing
+Import the project into Android Studio by selecting 'Import Project' and selecting the project's `build.gradle`. When prompted, you can just pick the default gradle wrapper.
+
+### Running the Robolectric Test
+To run Robolectric tests (example can be found in DeckardActivityTest) open Studio's
+"Build Variants" pane and change the "Test Artifact" to "Unit Tests". You can then run
+Robolectric tests using the JUnit test runner.
+
+### Running the Espresso Test
+To run Robolectric tests (example can be found in DeckardEspressoTest) open Studio's
+"Build Variants" pane and change the "Test Artifact" to "Android Instrumentation Tests".
+You can then run Espresso tests using the Android test runner.
