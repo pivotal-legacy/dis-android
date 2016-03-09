@@ -1,0 +1,14 @@
+resources:
+  - name: github
+    type: git
+    source:
+      uri: https://github.com/pivotal/dis-android.git
+      branch: master
+
+jobs:
+  - name: test
+    plan:
+      - get: github
+        trigger: true
+      - task: test
+        file: github/concourse/tasks/test.yml
