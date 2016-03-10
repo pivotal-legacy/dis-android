@@ -7,4 +7,4 @@ pushd github
 ./gradlew assemble
 popd
 
-cp github/build/outputs/apk/github.apk package/dis.apk
+cp github/build/outputs/apk/github-debug.apk package/dis.apk
