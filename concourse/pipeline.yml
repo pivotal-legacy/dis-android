@@ -5,6 +5,9 @@ resources:
       uri: https://github.com/pivotal/dis-android.git
       branch: master
 
+  - name: hockey
+    type: hockey
+
 jobs:
   - name: test
     plan:
@@ -12,3 +15,11 @@ jobs:
         trigger: true
       - task: test
         file: github/concourse/tasks/test.yml
+  - name: package
+    plan:
+      - get: github
+        trigger: true
+        passed: [test]
+      - task: package
+        file: github/concourse/task/package.yml
+      - put: hockey
