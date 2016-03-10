@@ -5,5 +5,8 @@ image: docker:///seadowg/android#android-21
 inputs:
   - name: github
 
+outputs:
+  - name: package
+
 run:
   path: github/concourse/scripts/package.sh
