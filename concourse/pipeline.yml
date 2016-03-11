@@ -7,6 +7,9 @@ resources:
 
   - name: hockey
     type: hockey
+    source:
+      app_id: APP_ID
+      token: TOKEN
 
 jobs:
   - name: test
@@ -23,3 +26,6 @@ jobs:
       - task: package
         file: github/concourse/tasks/package.yml
       - put: hockey
+        params:
+          path: package/dis.apk
+          downloadable: true
