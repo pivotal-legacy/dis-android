@@ -112,8 +112,8 @@ public class DisruptionsListEspressoTest extends DisEspressoTest<DisActivity> {
 
         linesClient.setDisruptedLines(
                 Arrays.asList(
-                        new Line("Central", "Severe Delays"),
-                        new Line("District", "Part Suspended")));
+                        new Line("Central", "Severe Delays", "#000000", "#ffffff"),
+                        new Line("District", "Part Suspended", "#000000", "#ffffff")));
 
         assertHasText("No disruptions");
 
@@ -151,7 +151,6 @@ public class DisruptionsListEspressoTest extends DisEspressoTest<DisActivity> {
             refresh();
 
             assertHasText("Couldn't retrieve data from server :(");
-
         } catch (Exception e) {
             Assert.fail("Process should not throw any exception");
         }
@@ -163,8 +162,8 @@ public class DisruptionsListEspressoTest extends DisEspressoTest<DisActivity> {
                         getInstrumentation().getTargetContext(),
                         new FakeLinesClient(
                                 Arrays.asList(
-                                        new Line("Central", "Severe Delays", "12:30", "13:30", "13:10", "13:50"),
-                                        new Line("District", "Part Suspended", "14:30", "15:30", "15:25", "15:35")))));
+                                        new Line("Central", "Severe Delays", "12:30", "13:30", "13:10", "13:50", "#000000", "#ffffff"),
+                                        new Line("District", "Part Suspended", "14:30", "15:30", "15:25", "15:35", "#000000", "#ffffff")))));
     }
 
     private void mockDisruptionsWithoutTimes() {
@@ -173,8 +172,8 @@ public class DisruptionsListEspressoTest extends DisEspressoTest<DisActivity> {
                         getInstrumentation().getTargetContext(),
                         new FakeLinesClient(
                                 Arrays.asList(
-                                        new Line("Central", "Severe Delays"),
-                                        new Line("District", "Part Suspended")))));
+                                        new Line("Central", "Severe Delays", "#000000", "#ffffff"),
+                                        new Line("District", "Part Suspended", "#000000", "#ffffff")))));
     }
 
     private void refresh() {

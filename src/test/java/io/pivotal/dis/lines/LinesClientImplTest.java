@@ -42,7 +42,7 @@ public class LinesClientImplTest {
         URL serverUrl = mockWebServer.url("").url();
         LinesClientImpl linesClient = new LinesClientImpl(new UrlProvider(RuntimeEnvironment.application, serverUrl, serverUrl));
         List<Line> lines = linesClient.fetchDisruptedLines();
-        assertThat(lines.get(0), equalTo(new Line("Bakerloo", "Leaves on the platforms", "10:00", "15:00", "14:00", "16:00")));
+        assertThat(lines.get(0), equalTo(new Line("Bakerloo", "Leaves on the platforms", "10:00", "15:00", "14:00", "16:00", "#000000", "#ffffff")));
     }
 
     @Test(expected = SocketTimeoutException.class)

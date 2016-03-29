@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="#c1c1c1"
         android:text="Northern" />
 
     <RelativeLayout
@@ -22,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:textColor="#c1c1c1"
             android:text="Minor Delays" />
         <TextView
             android:id="@+id/line_disruption_started_time"
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:textSize="16sp"
+            android:textColor="#c1c1c1"
             android:text="Started: 12:30" />
         <TextView
             android:id="@+id/line_disruption_end_time"
@@ -37,6 +40,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/line_disruption_started_time"
             android:textSize="16sp"
+            android:textColor="#c1c1c1"
             android:text="Ended: 12:30" />
     </RelativeLayout>
 </LinearLayout>

@@ -10,19 +10,25 @@ public class Line {
   private String endTime;
   private String earliestEndTime;
   private String latestEndTime;
+  private String backgroundColor;
+  private String foregroundColor;
 
-  public Line(String name, String status) {
+  public Line(String name, String status, String backgroundColor, String foregroundColor) {
     this.name = name;
     this.status = status;
+    this.backgroundColor = backgroundColor;
+    this.foregroundColor = foregroundColor;
   }
 
-  public Line(String name, String status, String startTime, String endTime, String earliestEndTime, String latestEndTime) {
+  public Line(String name, String status, String startTime, String endTime, String earliestEndTime, String latestEndTime, String backgroundColor, String foregroundColor) {
     this.name = name;
     this.status = status;
     this.startTime = startTime;
     this.endTime = endTime;
     this.earliestEndTime = earliestEndTime;
     this.latestEndTime = latestEndTime;
+    this.backgroundColor = backgroundColor;
+    this.foregroundColor = foregroundColor;
   }
 
   public String getName() {
@@ -82,5 +88,17 @@ public class Line {
     result = 31 * result + (earliestEndTime != null ? earliestEndTime.hashCode() : 0);
     result = 31 * result + (latestEndTime != null ? latestEndTime.hashCode() : 0);
     return result;
+  }
+
+  public String getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public void setBackgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+  }
+
+  public String getForegroundColor() {
+    return foregroundColor;
   }
 }
